@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
+    <title>Adamant Trade</title>
+</head>
+<!--    ссылка на адаптер бустрап-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<!--    черная шапка main-->
+<body class="d-flex h-100 text-center text-bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <header th:insert="blocks/header :: header"></header>
+    <br><br>
+    <h3>Корзина</h3>
+    <br>
+
+
+    <table class="table table-dark table-striped text-bg-primary p-3" >
+        <thead>
+        <tr>
+            <th scope="col">Наименование </th>
+            <th scope="col">Категория</th>
+            <th scope="col">Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="element : ${products}">
+            <td th:text="${element.name}"></td>
+            <td th:text="${element.category.getTranslate()}"></td>
+            <td th:text="${element.priceFormat()}"></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a href="/order" class="btn btn-sm btn-light fw-bold border-white bg-white">Сделать заказ</a>
+    </div>
+
+
+    <footer th:insert="blocks/footer :: footer"></footer>
+</div>
+
+</body>
+
+</html>
